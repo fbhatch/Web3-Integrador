@@ -31,4 +31,19 @@ public class ChoferBusiness implements IChoferBusiness{
         }
         return response.get();
     }
+
+    @Override
+    public Chofer loadById(Long id) throws BusinessException, NotFoundException {
+        Optional<Chofer> response;
+        try{
+            response = choferDAO.findById(id);
+        }catch (Exception e){
+            log.error(e.getMessage(), e);
+            throw BusinessException.builder().ex(e).build();
+        }
+        if (response.isEmpty()) {
+            throw NotFoundException.builder().message("No se encuentra el chofer con id '" + id + "'").build();
+        }
+        return response.get();
+    }
 }
