@@ -6,8 +6,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class NotFoundException extends Exception {
 
-    private static final long serialVersionUID = -8582277206660722157L;
-
     @Builder
     public NotFoundException(String message, Throwable ex) {
         super(message, ex);
@@ -22,4 +20,5 @@ public class NotFoundException extends Exception {
     public NotFoundException(Throwable ex) {
         super(ex.getMessage(), ex);
     }
+
 }
